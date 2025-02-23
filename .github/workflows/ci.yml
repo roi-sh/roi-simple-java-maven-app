@@ -66,12 +66,10 @@ jobs:
           docker pull ${{ env.DOCKER_REPO }}:latest
 
           # Stop and remove the existing container (if running)
-          docker stop my-app || true
-          docker rm my-app || true
+          docker stop ${{ env.DOCKER_REPO }}:latest || true
+          docker rm ${{ env.DOCKER_REPO }}:latest || true
 
           # Run the new container
           docker run -d \
-            --name my-app \
-            -p 80:8080 \
             ${{ env.DOCKER_REPO }}:latest
           EOF
