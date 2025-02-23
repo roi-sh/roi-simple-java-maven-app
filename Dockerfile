@@ -4,14 +4,14 @@ WORKDIR /app
 COPY pom.xml .
 RUN mvn dependency:go-offline
 
-COPY src/main/java/com/mycompany/app .
+COPY ./src ./src
 
 RUN ls
 
 # Build the application (creates the JAR file inside /app/target)
 RUN mvn clean package -DskipTests
 
-FROM eclipse-temurin:17-jdk-jammy
+FROM eclipse-temurin:17-jre
 WORKDIR /app
 
 # Copy the JAR file from the builder stage
