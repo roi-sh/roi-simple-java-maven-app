@@ -63,9 +63,9 @@ jobs:
               -i ${{ secrets.SSH_PRIVATE_KEY_PATH }} \
               ubuntu@51.20.109.176 << 'EOF'
           # Pull the latest Docker image
-          docker pull ${{ env.DOCKER_REPO }}:latest
+          docker pull roish1/simple-java-maven-app
 
           # Run the new container
           docker run -d \
-            ${{ env.DOCKER_REPO }}:latest
+            roish1/simple-java-maven-app
           EOF
