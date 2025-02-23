@@ -15,7 +15,7 @@ FROM eclipse-temurin:17-jdk-jammy
 WORKDIR /app
 
 # Copy the JAR file from the builder stage
-COPY --from=builder /app/target/*.jar app.jar
+COPY --from=build /app/target/*.jar app.jar
 
 # Set the entrypoint to run the JAR
 ENTRYPOINT ["java", "-jar", "app.jar"]
